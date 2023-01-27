@@ -16,6 +16,7 @@ include('includes/functions.php')
   <h1>Inventory Management</h1>
   <?php
   formatcode(selectAll());
+  formatcode(selectSingle(1));
   ?>
 </body>
 
