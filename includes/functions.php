@@ -47,4 +47,26 @@ function insert($pname = NULL, $quantity = NULL)
   $stmt->bind_param('ss', $pname, $quantity);
   $stmt->execute();
   $stmt->close();
+  header('Location: update.php?id=' . $mysqli->insert_id);
+}
+// update statement
+function update($pname = NULL, $quantity = NULL, $id)
+{
+  global $mysqli;
+  $stmt = $mysqli->prepare('UPDATE products SET pname = ?, quantity = ? WHERE id =?');
+  $stmt->bind_param('ssi', $pname, $quantity, $id);
+  $stmt->execute();
+  if ($stmt->affected_rows === 0) echo ('No rows updated');
+  $stmt->close();
+}
+
+// delete statement
+function delete($id)
+{
+  global $mysqli;
+  $stmt = $mysqli->prepare('DELETE FROM products WHERE id =?');
+  $stmt->bind_param('i', $id);
+  $stmt->execute();
+  $stmt->close();
+  header('Location: index.php');
 }
