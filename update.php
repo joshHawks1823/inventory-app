@@ -17,6 +17,7 @@ $product  = (isset($_GET['id'])) ? selectSingle($_GET['id']) : false;
 </head>
 
 <body>
+  <?php include('theme/header.php'); ?>
   <?php if ($product != false) : ?>
     <h1>Update</h1>
     <form action="" method="post">
