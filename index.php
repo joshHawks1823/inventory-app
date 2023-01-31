@@ -19,7 +19,7 @@ $allProducts = selectAll();
   <?php include('theme/header.php'); ?>
   <div class="container">
 
-    <h2><i class="fas fa-table"></i> Inventory Management</h2>
+    <h2>Inventory Management</h2>
     <table class="table data-table">
       <thead>
         <tr>
@@ -45,8 +45,8 @@ $allProducts = selectAll();
             <td>' . $product['pname'] . '</td>
             <td>' . $product['quantity'] . '</td>
             <td class="text-end">
-           <a href="/update.php?id=' . $product['id'] . '">Update</a>
-           <a href=/delete?id=' . $product['id'] . '">Delete</a>
+           <a href="update.php?id=' . $product['id'] . '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square"></i></a>
+           <a href="delete.php?id=' . $product['id'] .  '" class="text-danger" onClick="return confirm(\'Are you sure you want to delete this product?\');" ><i class="fas fa-trash"></i></a>
             </td>
           </tr>
           ';

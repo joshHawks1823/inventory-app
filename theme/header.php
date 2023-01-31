@@ -1,9 +1,9 @@
 <?php
-$product = selectSingle(1);
+$loggedproduct = selectSingle(1);
 ?>
 
 <header>
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
       <div class="col">
         [logo here]
