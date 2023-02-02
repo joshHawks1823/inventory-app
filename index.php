@@ -36,23 +36,6 @@ $allProducts = selectAll();
           </th>
         </tr>
       </thead>
-      <tbody>
-        <?php
-        foreach ($allProducts as $product) :
-          echo '
-          <tr>
-            <td>' . $product['id'] . '</td>
-            <td>' . $product['pname'] . '</td>
-            <td>' . $product['quantity'] . '</td>
-            <td class="text-end">
-           <a href="update.php?id=' . $product['id'] . '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square"></i></a>
-           <a href="delete.php?id=' . $product['id'] .  '" class="text-danger" onClick="return confirm(\'Are you sure you want to delete this product?\');" ><i class="fas fa-trash"></i></a>
-            </td>
-          </tr>
-          ';
-        endforeach;
-        ?>
-      </tbody>
     </table>
   </div>
 

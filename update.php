@@ -22,7 +22,7 @@ $product  = (isset($_GET['id'])) ? selectSingle($_GET['id']) : false;
   <div class="container">
     <?php if ($product != false) : ?>
       <h2>Update</h2>
-      <form action="" method="post">
+      <form action="" method="post" class="form">
         <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
         <div class="row">
           <div class="col-md-6">
