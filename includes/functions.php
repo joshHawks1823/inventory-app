@@ -1,5 +1,6 @@
 <?php
 require_once('db.php');
+session_start();
 
 // format arrays
 function formatcode($arr)
@@ -17,10 +18,13 @@ function selectAll()
   $stmt = $mysqli->prepare('SELECT * FROM  products');
   $stmt->execute();
   $result = $stmt->get_result();
-  if ($result->num_rows === 0) echo ('no rows');
-  while ($row = $result->fetch_assoc()) {
-    $data[] = $row;
-  }
+  if ($result->num_rows === 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'There currently no records in the database');
+  else :
+    while ($row = $result->fetch_assoc()) {
+      $data[] = $row;
+    }
+  endif;
   $stmt->close();
   return $data;
 }
@@ -33,7 +37,6 @@ function selectSingle($id = NULL)
   $stmt->bind_param('i', $id);
   $stmt->execute();
   $result = $stmt->get_result();
-  if ($result->num_rows === 0) echo ('no rows');
   $row = $result->fetch_assoc();
   $stmt->close();
   return $row;
@@ -56,7 +59,11 @@ function update($pname = NULL, $quantity = NULL, $id)
   $stmt = $mysqli->prepare('UPDATE products SET pname = ?, quantity = ? WHERE id =?');
   $stmt->bind_param('ssi', $pname, $quantity, $id);
   $stmt->execute();
-  if ($stmt->affected_rows === 0) echo ('No rows updated');
+  if ($stmt->affected_rows === 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You did not make any changes');
+  else :
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully updated selected product');
+  endif;
   $stmt->close();
 }
 
