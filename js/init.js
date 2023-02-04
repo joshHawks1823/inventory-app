@@ -11,7 +11,7 @@ $(document).ready(function () {
           $(td).html(
             '<div class="text-end"><a href="update.php?id=' +
               id +
-              '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square"></i></a><a href="delete.php?id=' +
+              '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square "></i></a><a href="delete.php?id=' +
               id +
               '" class="text-danger" onClick="return confirm(\'Are you sure you want to delete this product?\');" ><i class="fas fa-trash"></i></a></div>'
           );
@@ -20,8 +20,8 @@ $(document).ready(function () {
     ],
     columnDefs: [
       {
-        target: [3],
         orderable: false,
+        targets: [2],
       },
     ],
   });

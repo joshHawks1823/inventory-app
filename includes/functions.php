@@ -50,7 +50,9 @@ function insert($pname = NULL, $quantity = NULL)
   $stmt->bind_param('ss', $pname, $quantity);
   $stmt->execute();
   $stmt->close();
+  $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully created a new product.');
   header('Location: update.php?id=' . $mysqli->insert_id);
+  exit();
 }
 // update statement
 function update($pname = NULL, $quantity = NULL, $id)
@@ -60,9 +62,9 @@ function update($pname = NULL, $quantity = NULL, $id)
   $stmt->bind_param('ssi', $pname, $quantity, $id);
   $stmt->execute();
   if ($stmt->affected_rows === 0) :
-    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You did not make any changes');
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You did not make any changes.');
   else :
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully updated selected product');
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully updated selected product.');
   endif;
   $stmt->close();
 }
@@ -75,5 +77,7 @@ function delete($id)
   $stmt->bind_param('i', $id);
   $stmt->execute();
   $stmt->close();
+  $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully deleted selected product.');
   header('Location: index.php');
+  exit();
 }

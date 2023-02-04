@@ -32,7 +32,7 @@ $product  = (isset($_GET['id'])) ? selectSingle($_GET['id']) : false;
             <label for="quantity">Quantity</label>
             <input type="text" name="quantity" class="form-control" id="quantity" value="<?php echo $product['quantity']; ?>">
             <br>
-            <button class="btn btn-primary" name="btnUpdate">Insert Record</button>
+            <button class="btn btn-primary" name="btnUpdate">Update</button>
           </div>
         </div>
 
