@@ -18,10 +18,12 @@ $(document).ready(function () {
         },
       },
     ],
-    columnDefs: [
+    "order": [[0, 'asc']],
+    "ordering": true,
+    "columnDefs": [
       {
-        orderable: false,
-        targets: [2],
+        "targets": [2,3],
+        "orderable": false,
       },
     ],
   });
