@@ -17,8 +17,7 @@ $allProducts = selectAll();
 
 <body>
   <?php include('./theme/header.php'); ?>
-  <div class="container">
-
+  <div class="container-fluid">
     <h2 class="mb-4">Inventory Management</h2>
     <table class="table table-striped data-table">
       <thead>
@@ -38,7 +37,6 @@ $allProducts = selectAll();
       </thead>
     </table>
   </div>
-
   <?php include('theme/footer-scripts.php'); ?>
 </body>
 

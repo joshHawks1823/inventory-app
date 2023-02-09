@@ -21,6 +21,7 @@ header nav ul li a{
   list-style: none;
   text-decoration: none;
   color: #333 !important;
+
 }
 header nav ul li a:hover{
   color: #6c757d !important;
@@ -67,6 +68,10 @@ header nav ul li a:hover{
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 
 } 
+
+table {
+  width: 100% !important;
+}
 
 label {
   color: #595959;
