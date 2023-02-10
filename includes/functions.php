@@ -81,3 +81,33 @@ function delete($id)
   header('Location: index.php');
   exit();
 }
+
+function doLogin($username = NULL, $password = NUll)
+{
+  global $mysqli;
+  // $password = password_hash($password, PASSWORD_DEFAULT);
+  // echo $password;
+  $stmt = $mysqli->prepare('SELECT * FROM  users WHERE username = ? AND active = 1');
+  $stmt->bind_param('s', $username);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows === 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Your account has not been enabled. Please contact your adminstrator.');
+  else :
+    while ($row = $result->fetch_assoc()) {
+      $hash = $row['password'];
+      if (password_verify($password, $hash)) :
+        $_SESSION['user']['id'] = $row['id'];
+        $_SESSION['user']['fname'] = $row['fname'];
+        $_SESSION['user']['lname'] = $row['lname'];
+        $_SESSION['user']['username'] = $row['username'];
+        $_SESSION['user']['level'] = $row['level'];
+        header('Location: index.php');
+      else :
+        $_SESSION['message'] = array('type' => 'danger', 'msg' => 'Your username or password is incorrect.');
+      endif;
+    }
+  endif;
+  $stmt->close();
+}
+// $password = password_hash($password, PASSWORD_DEFAULT);

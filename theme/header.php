@@ -14,7 +14,7 @@ $loggedproduct = selectSingle(1);
       <div class="container-fluid">
         <div class="row">
           <div class="col">
-            <h3>KDRP</h3>
+            <h4>KDRP</h4>
           </div>
           <div class="col-md-8 text-end">
             <nav>
@@ -27,4 +27,3 @@ $loggedproduct = selectSingle(1);
         </div>
       </div>
     </header>
-  

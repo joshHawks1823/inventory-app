@@ -66,11 +66,15 @@ header nav ul li a:hover{
     appearance: none;
     border-radius: .325rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-
 } 
 
-table {
-  width: 100% !important;
+
+
+
+@media only screen and (max-width: 425px){
+	  td {
+    width: 100% !important;
+  }
 }
 
 label {
@@ -78,3 +82,14 @@ label {
   font-style: italic;
 }
 
+table.dataTable {
+  border: 1px solid #d6d6d6;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: transparent !important;
+}
+
+.table-striped tbody th, table.dataTable tbody td {
+  padding: 1rem;
+}
