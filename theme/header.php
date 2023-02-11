@@ -1,5 +1,15 @@
 <?php
-$loggedproduct = selectSingle(1);
+if (!isset($_SESSION['user'])) :
+  header('Location: login.php');
+  exit();
+endif;
+?>
+
+<?php
+$loggedInUser = selectSingleUser($_SESSION['user']['id']);
+$welcome = 'Welcome, ' . $loggedInUser['fname'] . ' ' . $loggedInUser['lname'] . '(<a href="logout.php">Logout</a>)';
+  // $loggedInUser = selectSingle(1);
+;
 ?>
 <?php if (isset($_SESSION['message'])) : ?>
   <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
@@ -20,7 +30,10 @@ $loggedproduct = selectSingle(1);
             <nav>
               <ul>
                 <li><a href="/inventory-app/index.php">Dashboard</a></li>
-                <li><a style="margin-left: 1rem;" href="/inventory-app/create.php">Create New</a></li>
+                <li style="margin-left: 1rem;"><a href="/inventory-app/create.php">Create New</a></li>
+                <li style="margin-left: 1rem;">
+                  <?php echo $welcome; ?>
+                </li>
               </ul>
             </nav>
           </div>

@@ -82,6 +82,7 @@ function delete($id)
   exit();
 }
 
+// Login Statement
 function doLogin($username = NULL, $password = NUll)
 {
   global $mysqli;
@@ -110,4 +111,27 @@ function doLogin($username = NULL, $password = NUll)
   endif;
   $stmt->close();
 }
+
+// Logout Statment
+function doLogOut()
+{
+  unset($_SESSION['user']);
+  $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have been successfully logged out');
+  header('Location: login.php');
+  exit();
+}
+
+// Select single statement
+function selectSingleUser($id = NULL)
+{
+  global $mysqli;
+  $stmt = $mysqli->prepare('SELECT * FROM  users WHERE id = ?');
+  $stmt->bind_param('i', $id);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $row = $result->fetch_assoc();
+  $stmt->close();
+  return $row;
+}
+
 // $password = password_hash($password, PASSWORD_DEFAULT);
