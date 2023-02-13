@@ -1,9 +1,11 @@
 <?php
 include('includes/functions.php');
-if (isset($_POST['btnLogin'])) :
+if (isset($_POST['btnRegister'])) :
   $username = $_POST['username'];
   $password = $_POST['password'];
-  doLogin($username, $password);
+  $fname = $_POST['fname'];
+  $lname = $_POST['lname'];
+  createUser($username, $password, $fname, $lname);
 endif;
 ?>
 
@@ -32,15 +34,27 @@ endif;
   <div class="card">
     <div class="card-body">
       <div class="container-fluid">
-        <h2 class="mb-4">Login</h2>
-        <form action="" method="post" class="login">
+        <h2 class="mb-4">Register</h2>
+        <form action="" method="post" class="register">
+          <div class="row">
+            <div class="col-md-6">
+              <label for="fname">First Name:</label>
+              <input type="text" name="fname" id="fname" class="form-control">
+              <br>
+            </div>
+            <div class="col-md-6">
+              <label for="lname">Last Name:</label>
+              <input type="text" name="lname" id="lname" class="form-control">
+              <br>
+            </div>
+          </div>
           <label for="username">Username:</label>
           <input type="text" name="username" id="username" class="form-control">
           <br>
-          <label for="password">Password</label>
+          <label for="password">Password:</label>
           <input type="password" name="password" id="password" class="form-control">
           <br>
-          <button class="btn btn-primary" name="btnLogin">Login</button> <a href="register.php">Register</a>
+          <button class="btn btn-primary" name="btnRegister">Register</button>
         </form>
       </div>
     </div>

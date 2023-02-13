@@ -134,4 +134,28 @@ function selectSingleUser($id = NULL)
   return $row;
 }
 
+// Create user statement
+function createUser($username = NULL, $password = NULL, $fname = NULL, $lname = NULL, $active = NULL, $level = NULL)
+{
+  global $mysqli;
+  $password = password_hash($password, PASSWORD_DEFAULT);
+  $stmt = $mysqli->prepare('INSERT INTO users (username, password, fname, lname, active, level) VALUES (?, ?, ?, ?, ?, ?)');
+  if ($active == NULL) :
+    $active = 0;
+  endif;
+  if ($level == NULL) :
+    $level = 0;
+  endif;
+  $stmt->bind_param('ssssii', $username, $password, $fname, $lname, $active, $level);
+  $stmt->execute();
+  $stmt->close();
+  if (isset($_SESSION['user'])) :
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully added a new user.');
+    header('Location: users.php ');
+  else :
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have successfully created a new user, once approved you can log in here. ');
+    header('Location: login.php ');
+  endif;
+  exit();
+}
 // $password = password_hash($password, PASSWORD_DEFAULT);
