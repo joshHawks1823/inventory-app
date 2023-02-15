@@ -86,8 +86,6 @@ function delete($id)
 function doLogin($username = NULL, $password = NUll)
 {
   global $mysqli;
-  // $password = password_hash($password, PASSWORD_DEFAULT);
-  // echo $password;
   $stmt = $mysqli->prepare('SELECT * FROM  users WHERE username = ? AND active = 1');
   $stmt->bind_param('s', $username);
   $stmt->execute();
@@ -138,24 +136,32 @@ function selectSingleUser($id = NULL)
 function createUser($username = NULL, $password = NULL, $fname = NULL, $lname = NULL, $active = NULL, $level = NULL)
 {
   global $mysqli;
-  $password = password_hash($password, PASSWORD_DEFAULT);
-  $stmt = $mysqli->prepare('INSERT INTO users (username, password, fname, lname, active, level) VALUES (?, ?, ?, ?, ?, ?)');
-  if ($active == NULL) :
-    $active = 0;
-  endif;
-  if ($level == NULL) :
-    $level = 0;
-  endif;
-  $stmt->bind_param('ssssii', $username, $password, $fname, $lname, $active, $level);
+  $stmt = $mysqli->prepare('SELECT * FROM  users WHERE username = ?');
+  $stmt->bind_param('s', $username);
   $stmt->execute();
-  $stmt->close();
-  if (isset($_SESSION['user'])) :
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully added a new user.');
-    header('Location: users.php ');
+  $result = $stmt->get_result();
+  if ($result->num_rows !== 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'The username you chose is taken. Please try again');
   else :
-    $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have successfully created a new user, once approved you can log in here. ');
-    header('Location: login.php ');
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $stmt = $mysqli->prepare('INSERT INTO users (username, password, fname, lname, active, level) VALUES (?, ?, ?, ?, ?, ?)');
+    if ($active == NULL) :
+      $active = 0;
+    endif;
+    if ($level == NULL) :
+      $level = 0;
+    endif;
+    $stmt->bind_param('ssssii', $username, $password, $fname, $lname, $active, $level);
+    $stmt->execute();
+    $stmt->close();
+    if (isset($_SESSION['user'])) :
+      $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully added a new user.');
+      header('Location: users.php ');
+    else :
+      $_SESSION['message'] = array('type' => 'success', 'msg' => 'You have successfully created a new user, once approved you can log in here. ');
+      header('Location: login.php ');
+    endif;
+    exit();
   endif;
-  exit();
 }
 // $password = password_hash($password, PASSWORD_DEFAULT);
