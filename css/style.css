@@ -87,3 +87,9 @@ table.dataTable {
 .table-striped tbody th, table.dataTable tbody td {
   padding: 1rem;
 }
+
+.tab-pane {
+  border: 1px solid #dee2e6;
+  border-top: 0;
+  padding: 2rem;
+}

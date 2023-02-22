@@ -54,7 +54,7 @@ endif;
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" class="form-control">
           <br>
-          <button class="btn btn-primary" name="btnRegister">Register</button>
+          <button class="btn btn-primary" name="btnRegister">Register</button> <a href="login.php">Cancel</a>
         </form>
       </div>
     </div>

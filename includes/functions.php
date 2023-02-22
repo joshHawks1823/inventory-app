@@ -119,6 +119,26 @@ function doLogOut()
   exit();
 }
 
+// Select all users
+function selectAllUsers()
+{
+  global $mysqli;
+  $data = array();
+  $stmt = $mysqli->prepare('SELECT * FROM  users');
+  $stmt->execute();
+  $result = $stmt->get_result();
+  if ($result->num_rows === 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'There currently no records in the database');
+  else :
+    while ($row = $result->fetch_assoc()) {
+      $data[] = $row;
+    }
+  endif;
+  $stmt->close();
+  return $data;
+}
+
+
 // Select single statement
 function selectSingleUser($id = NULL)
 {
