@@ -184,4 +184,20 @@ function createUser($username = NULL, $password = NULL, $fname = NULL, $lname = 
     exit();
   endif;
 }
-// $password = password_hash($password, PASSWORD_DEFAULT);
+
+
+// update user statement
+function updateUser($username, $fname = NULL, $lname = NULL, $active, $level, $id)
+{
+  global $mysqli;
+  $stmt = $mysqli->prepare('UPDATE users SET username = ?, fname = ?, lname = ?, active = ?, level = ? WHERE id =?');
+  $stmt->bind_param('sssiii', $username, $fname, $lname, $active, $level, $id);
+  $stmt->execute();
+  if ($stmt->affected_rows === 0) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You did not make any changes.');
+  else :
+    $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully updated selected user.');
+  endif;
+  $stmt->close();
+}
+

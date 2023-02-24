@@ -31,6 +31,7 @@ $welcome = 'Welcome, ' . $loggedInUser['fname'] . ' ' . $loggedInUser['lname'] .
               <ul>
                 <li><a href="/inventory-app/index.php">Dashboard</a></li>
                 <li style="margin-left: 1rem;"><a href="/inventory-app/create.php">Create New</a></li>
+                <li style="margin-left: 1rem;"><a href="/inventory-app/users.php">Users</a></li>
                 <li style="margin-left: 1rem;">
                   <?php echo $welcome; ?>
                 </li>

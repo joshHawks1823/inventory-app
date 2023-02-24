@@ -90,7 +90,7 @@ $(document).ready(function () {
         data: 'id',
         fnCreatedCell: function (td, id) {
           $(td).html(
-            '<div class="text-end"><a href="update.php?id=' +
+            '<div class="text-end"><a href="updateUser.php?id=' +
               id +
               '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square "></i></a><a href="deleteUser.php?id=' +
               id +
