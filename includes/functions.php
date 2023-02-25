@@ -201,3 +201,25 @@ function updateUser($username, $fname = NULL, $lname = NULL, $active, $level, $i
   $stmt->close();
 }
 
+// delete user statement
+function deleteUser($id)
+{
+  global $mysqli;
+  $stmt = $mysqli->prepare('DELETE FROM users WHERE id =?');
+  $stmt->bind_param('i', $id);
+  $stmt->execute();
+  $stmt->close();
+  $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully deleted selected user.');
+  header('Location: users.php');
+  exit();
+}
+
+// Validate user can access pages
+
+function auth() {
+  if($_SESSION['user']['level'] < 1) :
+    $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You are not authorized to view that page');
+    header('Location: index.php');
+    exit();
+  endif;
+  }

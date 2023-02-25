@@ -29,10 +29,12 @@ $welcome = 'Welcome, ' . $loggedInUser['fname'] . ' ' . $loggedInUser['lname'] .
           <div class="col-md-8 text-end">
             <nav>
               <ul>
-                <li><a href="/inventory-app/index.php">Dashboard</a></li>
+                <li style="margin-right: 1rem;"><a href="/inventory-app/index.php">Dashboard</a></li>
+                <?php if($_SESSION['user']['level']>=1) : ?>
                 <li style="margin-left: 1rem;"><a href="/inventory-app/create.php">Create New</a></li>
                 <li style="margin-left: 1rem;"><a href="/inventory-app/users.php">Users</a></li>
                 <li style="margin-left: 1rem;">
+                <?php endif;?>
                   <?php echo $welcome; ?>
                 </li>
               </ul>
