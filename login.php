@@ -29,19 +29,34 @@ endif;
     </div>
     <?php unset($_SESSION['message']); ?>
   <?php endif; ?>
-  <div class="card">
-    <div class="card-body">
-      <div class="container-fluid">
-        <h2 class="mb-4">Login</h2>
-        <form action="" method="post" class="login">
-          <label for="username">Username:</label>
-          <input type="text" name="username" id="username" class="form-control">
-          <br>
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" class="form-control">
-          <br>
-          <button class="btn btn-primary" name="btnLogin">Login</button> <a href="register.php">Register</a>
-        </form>
+
+  <div class="login-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <h3 class="mb-3">Login Now</h3>
+          <div class="bg-white shadow rounded">
+            <div class="row">
+              <div class="col-md-10 pe-0">
+                <div class="form-left h-100 py-5 px-5">
+                  <form action="" method="post" class="login">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control">
+                    <br>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                    <br>
+                    <div class="d-flex align-items-center">
+
+                      <button class="btn btn-primary" name="btnLogin">Login</button>
+                      <a href="register.php" class="ms-2">Register</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

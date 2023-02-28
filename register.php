@@ -31,10 +31,10 @@ endif;
     </div>
     <?php unset($_SESSION['message']); ?>
   <?php endif; ?>
-  <div class="card">
-    <div class="card-body">
-      <div class="container-fluid">
-        <h2 class="mb-4">Register</h2>
+  <div class="register-page">
+    <div class="container">
+      <h3 class="mb-4">Register</h3>
+      <div class="bg-white shadow rounded py-5 px-5">
         <form action="" method="post" class="register">
           <div class="row">
             <div class="col-md-6">
@@ -54,7 +54,11 @@ endif;
           <label for="password">Password:</label>
           <input type="password" name="password" id="password" class="form-control">
           <br>
-          <button class="btn btn-primary" name="btnRegister">Register</button> <a href="login.php">Cancel</a>
+          <div class="d-flex align-items-center">
+
+            <button class="btn btn-primary" name="btnRegister">Register</button> 
+            <a href="login.php" class="ms-2">Cancel</a>
+          </div>
         </form>
       </div>
     </div>
