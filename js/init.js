@@ -94,7 +94,7 @@ $(document).ready(function () {
               id +
               '" <abbr title="Edit this product"></abbr><i class="fas fa-pen-square "></i></a><a href="deleteUser.php?id=' +
               id +
-              '" class="text-danger" onClick="return confirm(\'Are you sure you want to delete this product?\');" ><i class="fas fa-trash"></i></a></div>'
+              '" class="text-danger" onClick="return confirm(\'Are you sure you want to delete this user?\');" ><i class="fas fa-trash"></i></a></div>'
           );
         },
       },

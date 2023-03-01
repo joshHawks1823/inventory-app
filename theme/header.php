@@ -30,10 +30,10 @@ $welcome = 'Welcome, ' . $loggedInUser['fname'] . ' ' . $loggedInUser['lname'] .
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/inventory-app/index.php">Dashboard</a>
         </li>
-        <?php if ($_SESSION['user']['level'] >= 1) : ?>
         <li class="nav-item">
           <a class="nav-link" href="/inventory-app/create.php">Create New</a>
         </li>
+        <?php if ($_SESSION['user']['level'] >= 1) : ?>
         <li class="nav-item">
           <a class="nav-link" href="/inventory-app/users.php">Users</a>
         </li>

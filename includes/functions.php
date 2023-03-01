@@ -51,7 +51,7 @@ function insert($pname = NULL, $quantity = NULL)
   $stmt->execute();
   $stmt->close();
   $_SESSION['message'] = array('type' => 'success', 'msg' => 'Successfully created a new product.');
-  header('Location: update.php?id=' . $mysqli->insert_id);
+  header('Location: index.php?id=' . $mysqli->insert_id);
   exit();
 }
 // update statement
