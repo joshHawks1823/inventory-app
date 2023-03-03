@@ -31,6 +31,7 @@ endif;
     </div>
     <?php unset($_SESSION['message']); ?>
   <?php endif; ?>
+  <h2 class="text-center">KDP</h2>
   <div class="register-page">
     <div class="container">
       <h3 class="mb-4">Register</h3>

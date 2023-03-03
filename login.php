@@ -29,7 +29,7 @@ endif;
     </div>
     <?php unset($_SESSION['message']); ?>
   <?php endif; ?>
-
+  <h2 class="text-center">KDP</h2>
   <div class="login-page">
     <div class="container">
       <div class="row justify-content-center">
