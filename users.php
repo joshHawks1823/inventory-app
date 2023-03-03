@@ -1,9 +1,7 @@
-
-
 <?php
 include('includes/functions.php');
 auth();
-if(isset($_POST['btnCreateUser'])):
+if (isset($_POST['btnCreateUser'])) :
   $username = $_POST['username'];
   $password = $_POST['password'];
   $fname = $_POST['fname'];
@@ -64,7 +62,8 @@ endif;
         </table>
 
       </div>
-      <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab" tabindex="0"> <form action="" method="post" class="register">
+      <div class="tab-pane fade" id="nav-add" role="tabpanel" aria-labelledby="nav-add-tab" tabindex="0">
+        <form action="" method="post" class="register">
           <div class="row">
             <div class="col-md-6">
               <label for="fname">First Name:</label>
@@ -89,7 +88,7 @@ endif;
             <div class="col-md-6">
               <label for="active">Active:</label>
               <select type="text" name="active" id="active" class="form-control">
-              <option value="0" selected>Inactive</option>
+                <option value="0" selected>Inactive</option>
                 <option value="1" selected>Active</option>
               </select>
               <br>
@@ -102,7 +101,8 @@ endif;
           <input type="password" name="password" id="password" class="form-control">
           <br>
           <button class="btn btn-primary" name="btnCreateUser">Create New User</button>
-        </form></div>
+        </form>
+      </div>
     </div>
   </div>
   <?php include('theme/footer-scripts.php'); ?>

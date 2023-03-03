@@ -216,10 +216,11 @@ function deleteUser($id)
 
 // Validate user can access pages
 
-function auth() {
-  if($_SESSION['user']['level'] < 1) :
+function auth()
+{
+  if ($_SESSION['user']['level'] < 1) :
     $_SESSION['message'] = array('type' => 'danger', 'msg' => 'You are not authorized to view that page');
     header('Location: index.php');
     exit();
   endif;
-  }
+}

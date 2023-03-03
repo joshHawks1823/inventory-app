@@ -18,27 +18,27 @@ $allProducts = selectAll();
 <body>
   <?php include('./theme/header.php'); ?>
   <div class="container-fluid">
- 
-  <h2 class="mb-4">Inventory Management</h2>
-    
-      <table class="table table-striped data-table">
-        <thead>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>
-              Product Name:
-            </th>
-            <th>
-              Quantity:
-            </th>
-            <th>
-            </th>
-          </tr>
-        </thead>
-      </table>
-  
+
+    <h2 class="mb-4">Inventory Management</h2>
+
+    <table class="table table-striped data-table">
+      <thead>
+        <tr>
+          <th>
+            ID
+          </th>
+          <th>
+            Product Name:
+          </th>
+          <th>
+            Quantity:
+          </th>
+          <th>
+          </th>
+        </tr>
+      </thead>
+    </table>
+
   </div>
   <?php include('theme/footer-scripts.php'); ?>
 </body>

@@ -57,7 +57,7 @@ endif;
           <br>
           <div class="d-flex align-items-center">
 
-            <button class="btn btn-primary" name="btnRegister">Register</button> 
+            <button class="btn btn-primary" name="btnRegister">Register</button>
             <a href="login.php" class="ms-2">Cancel</a>
           </div>
         </form>
